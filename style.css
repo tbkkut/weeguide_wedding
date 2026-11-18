@@ -7,3 +7,88 @@
 @media(max-width:800px){.flower{width:clamp(160px,35vw,270px)}.hero{grid-template-columns:1fr}.hero-photo{height:340px;min-height:340px}.hero-copy{padding:42px 18px 50px}.hero-copy h2{font-size:65px}.venue-layout{grid-template-columns:1fr}.venue-image{height:260px}.topbar{flex-direction:column;gap:3px;padding:8px 10px}.polaroids{gap:10px}.polaroids img{height:140px}}
 @media(max-width:520px){.flower{width:185px}.intro-center{padding-top:90px}.monogram{font-size:65px}.opening-names{font-size:28px}.opening-subtitle{font-size:15px}.envelope{width:min(310px,86vw);height:205px}.letter strong{font-size:32px}.topbar nav{justify-content:center}nav a{padding:7px;font-size:10px}.section{padding:58px 12px}.hero-photo{height:285px;min-height:285px}.hero-copy h2{font-size:57px}.script-heading{font-size:52px}.countdown{gap:7px}.countdown>div{padding:14px 3px}.countdown strong{font-size:28px}.countdown span{font-size:9px;letter-spacing:.5px}.polaroids{grid-template-columns:1fr;max-width:330px;gap:14px}.polaroids figure,.polaroids figure:nth-child(2),.polaroids figure:nth-child(3){transform:none}.polaroids img{height:185px}.gallery-view img{height:240px}.gallery-grid{grid-template-columns:repeat(5,1fr);gap:4px}.gallery-thumb{padding:1px}.gallery-thumb img{height:55px}.rsvp-form{padding:18px}.footer strong{font-size:45px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.envelope{animation:none}.opening.closing,.website{animation:none;transition:none}}
+
+
+/* =========================================================
+  P&K — Floral Bloom Reveal (opening invitation only)
+  Three-stage envelope opening: golden light, floral burst,
+  drifting petals, then dissolve into the wedding website.
+========================================================= */
+.opening{isolation:isolate}
+.opening .intro-center{z-index:3}
+.opening .envelope.is-open{filter:drop-shadow(0 18px 24px #53789e66)}
+.opening.wow-opening .intro-center{animation:wowIntroSwell 3.3s ease-in-out both}
+@keyframes wowIntroSwell{
+  0%,12%{transform:scale(1)}
+  40%{transform:scale(1.022)}
+  68%{transform:scale(.99)}
+  100%{transform:scale(1.035)}
+}
+.wow-overlay{position:fixed;inset:0;z-index:100;pointer-events:none;overflow:hidden;contain:layout style paint}
+.wow-flare{
+  position:absolute;left:var(--origin-x);top:var(--origin-y);
+  width:18px;height:18px;border-radius:50%;transform:translate(-50%,-50%) scale(.25);
+  background:radial-gradient(circle,#fff 0%,#fff4d4 18%,#f6da9b88 48%,transparent 73%);
+  box-shadow:0 0 44px 18px #f3dcad88;
+  animation:wowFlare 1.35s ease-out both;
+}
+@keyframes wowFlare{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.1)}
+  28%{opacity:1;transform:translate(-50%,-50%) scale(6)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(29)}
+}
+.wow-ring{
+  position:absolute;left:var(--origin-x);top:var(--origin-y);
+  width:30px;height:30px;border:2px solid #efd6a6;border-radius:50%;
+  box-shadow:0 0 18px #ffecc6aa;
+  animation:wowRing 1.3s .05s cubic-bezier(.18,.7,.2,1) both;
+}
+@keyframes wowRing{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}
+  22%{opacity:.9}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(17)}
+}
+.wow-flower,.wow-petal,.wow-glitter{
+  position:absolute;left:var(--origin-x);top:var(--origin-y);pointer-events:none;user-select:none;
+  will-change:transform,opacity;
+}
+.wow-flower{
+  width:var(--size);height:var(--size);object-fit:contain;
+  filter:drop-shadow(0 8px 9px #517da345);
+  animation:wowBloom var(--time) var(--delay) cubic-bezier(.16,.72,.26,1) both;
+}
+@keyframes wowBloom{
+  0%{opacity:0;transform:translate(-50%,-50%) translate(0,0) scale(.05) rotate(-85deg)}
+  16%{opacity:1}
+  58%{opacity:1;transform:translate(-50%,-50%) translate(calc(var(--dx) * .88),calc(var(--dy) * .85)) scale(var(--scale)) rotate(var(--rotate))}
+  100%{opacity:0;transform:translate(-50%,-50%) translate(var(--dx),calc(var(--dy) - 65px)) scale(calc(var(--scale) * 1.08)) rotate(calc(var(--rotate) + 34deg))}
+}
+.wow-petal{
+  width:var(--size);height:var(--size);border-radius:70% 0 70% 0;
+  background:radial-gradient(circle at 32% 28%,#fff 0 12%,var(--petal-color) 70%);
+  box-shadow:0 2px 6px #7095bb22;
+  animation:wowPetal var(--time) var(--delay) cubic-bezier(.17,.55,.29,.93) both;
+}
+@keyframes wowPetal{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.12) rotate(0)}
+  20%{opacity:.94}
+  70%{opacity:.9;transform:translate(-50%,-50%) translate(calc(var(--dx) * .8),calc(var(--dy) * .8)) scale(1) rotate(210deg)}
+  100%{opacity:0;transform:translate(-50%,-50%) translate(var(--dx),calc(var(--dy) + 90px)) scale(.7) rotate(410deg)}
+}
+.wow-glitter{
+  color:#f4d594;font:var(--size) Georgia,serif;text-shadow:0 0 8px #f8dba9;
+  animation:wowGlitter var(--time) var(--delay) ease-out both;
+}
+@keyframes wowGlitter{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}
+  26%{opacity:1}
+  55%{opacity:1;transform:translate(-50%,-50%) translate(var(--dx),var(--dy)) scale(1.15) rotate(45deg)}
+  100%{opacity:0;transform:translate(-50%,-50%) translate(calc(var(--dx) * 1.1),calc(var(--dy) - 30px)) scale(.5) rotate(90deg)}
+}
+.opening.wow-transition{opacity:0;transform:scale(1.045);filter:blur(13px);transition:opacity .95s,transform .95s,filter .95s}
+@media(max-width:520px){.wow-flower{filter:drop-shadow(0 4px 5px #517da330)}}
+@media(prefers-reduced-motion:reduce){
+  .opening.wow-opening .intro-center,.wow-flare,.wow-ring,.wow-flower,.wow-petal,.wow-glitter{animation:none!important}
+  .wow-overlay{display:none!important}
+  .opening.wow-transition{transition:none!important;filter:none!important;transform:none!important}
+}
