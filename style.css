@@ -92,3 +92,8 @@
   .wow-overlay{display:none!important}
   .opening.wow-transition{transition:none!important;filter:none!important;transform:none!important}
 }
+
+/* Wedding soundtrack control — displayed after opening the invitation */
+.music-toggle{position:fixed;right:16px;bottom:16px;z-index:200;border:1px solid #c6d9ed;border-radius:100px;background:#fffdf9;color:#294b75;box-shadow:0 8px 25px #41698c4d;padding:12px 19px;cursor:pointer;font:600 13px 'Noto Sans Thai',sans-serif}
+.music-toggle[hidden]{display:none!important}
+.music-toggle:focus-visible{outline:3px solid #87b1e0;outline-offset:3px}

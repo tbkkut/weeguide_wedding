@@ -6,6 +6,30 @@ const website = document.getElementById('website');
 const envelope = document.getElementById('envelope');
 const openButton = document.getElementById('openButton');
 let hasOpened = false;
+const weddingMusic = document.getElementById('weddingMusic');
+const musicToggle = document.getElementById('musicToggle');
+weddingMusic.volume = 0.6;
+function syncMusicButton() {
+  const playing = !weddingMusic.paused;
+  musicToggle.textContent = playing ? '♫ ปิดเพลง' : '♫ เปิดเพลง';
+  musicToggle.setAttribute('aria-pressed', String(playing));
+}
+function startWeddingMusic() {
+  // Called from a real click so mobile browsers can authorize audio.
+  const promise = weddingMusic.play();
+  if (promise && typeof promise.catch === 'function') {
+    promise.catch(() => { syncMusicButton(); });
+  }
+}
+musicToggle.addEventListener('click', () => {
+  if (weddingMusic.paused) startWeddingMusic();
+  else weddingMusic.pause();
+});
+weddingMusic.addEventListener('play', syncMusicButton);
+weddingMusic.addEventListener('pause', syncMusicButton);
+weddingMusic.addEventListener('error', () => {
+  musicToggle.textContent = '♫ ไม่พบไฟล์เพลง';
+});
 
 // Gentle on mobile: the flower animation uses only temporary DOM nodes.
 function floralBloomBurst() {
@@ -82,6 +106,8 @@ function floralBloomBurst() {
 function openInvitation() {
   if (hasOpened) return;
   hasOpened = true;
+  musicToggle.hidden = false;
+  startWeddingMusic();
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   openButton.disabled = true;
   envelope.classList.add('is-open');
@@ -137,4 +163,4 @@ document.getElementById('rsvpForm').addEventListener('submit', event => {
   // Preview only. No data is submitted or stored.
   document.getElementById('rsvpSuccess').hidden = false;
 });
-// Music is intentionally disabled until a suitable licensed audio file is selected.
+
