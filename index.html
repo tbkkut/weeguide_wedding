@@ -1,0 +1,807 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kongkrit & Paweenuch | Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #101e32;
+  --navy-light: #253b58;
+  --gold: #c8a773;
+  --ivory: #fbf8f3;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  font-family: 'Prompt', sans-serif;
+  color: #27334a;
+}
+
+button { cursor: pointer; }
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+}
+
+.script {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+}
+
+.gold-line {
+  height: 1px;
+  width: 90px;
+  margin: 22px auto;
+  background: var(--gold);
+}
+
+.btn {
+  border: 1px solid var(--gold);
+  border-radius: 40px;
+  background: var(--navy);
+  color: #f7e5c5;
+  padding: 14px 30px;
+  font-family: 'Prompt', sans-serif;
+  transition: .3s;
+}
+
+.btn:hover {
+  background: #3c5475;
+  transform: translateY(-2px);
+}
+
+/* ===== ENVELOPE INTRO ===== */
+
+#intro {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, #385276, transparent 45%),
+    linear-gradient(140deg, #091321, #182c47);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  padding: 35px 20px;
+}
+
+.intro-flower {
+  position: absolute;
+  font-size: 100px;
+  opacity: .45;
+  pointer-events: none;
+}
+
+.flower-top {
+  top: -25px;
+  left: -20px;
+}
+
+.flower-bottom {
+  bottom: -30px;
+  right: -20px;
+  transform: rotate(170deg);
+}
+
+.monogram {
+  width: 110px;
+  height: 110px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font: 48px 'Great Vibes', cursive;
+  color: #e5c99b;
+}
+
+.intro-heading {
+  letter-spacing: 4px;
+  font-family: 'Playfair Display', serif;
+  margin-top: 35px;
+}
+
+.envelope {
+  width: min(330px, 86vw);
+  height: 220px;
+  position: relative;
+  margin: 45px 0 32px;
+  perspective: 1000px;
+  filter: drop-shadow(0 15px 18px #0008);
+  cursor: pointer;
+}
+
+.env-back {
+  position: absolute;
+  inset: 0;
+  background: #40516a;
+  border-radius: 5px;
+}
+
+.env-letter {
+  position: absolute;
+  width: 84%;
+  height: 170px;
+  left: 8%;
+  bottom: 15px;
+  background: #fffaf0;
+  border: 3px double #d0b388;
+  color: #20334c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1s .2s;
+}
+
+.env-letter h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 36px;
+  line-height: 1.2;
+  margin: 15px 0;
+}
+
+.env-front {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(130deg, #1a2a40, #2e4765);
+  clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
+  z-index: 3;
+}
+
+.env-flap {
+  position: absolute;
+  inset: 0;
+  background: #38516f;
+  clip-path: polygon(0 0, 100% 0, 50% 54%);
+  transform-origin: top;
+  transition: transform .7s;
+  z-index: 4;
+}
+
+.seal {
+  position: absolute;
+  top: 88px;
+  left: calc(50% - 30px);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #f4dcac, #9f7339);
+  display: grid;
+  place-items: center;
+  font-family: 'Great Vibes', cursive;
+  font-size: 24px;
+  color: white;
+  z-index: 5;
+  border: 4px double #f4d59d;
+  transition: opacity .3s;
+}
+
+.envelope.open .env-flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.envelope.open .seal {
+  opacity: 0;
+}
+
+.envelope.open .env-letter {
+  transform: translateY(-105px);
+  z-index: 2;
+}
+
+/* ===== MAIN WEBSITE ===== */
+
+#website { display: none; }
+
+nav {
+  background: var(--navy);
+  color: #e3c59a;
+  padding: 16px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.logo {
+  font: 35px 'Great Vibes', cursive;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #f1e7d7;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+/* ===== HERO ===== */
+
+.hero {
+  background: var(--navy);
+  color: white;
+  text-align: center;
+  padding-bottom: 70px;
+}
+
+.hero-photo {
+  height: 540px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 45%, var(--navy));
+}
+
+.hero-content {
+  position: relative;
+  margin-top: -100px;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font: clamp(46px, 8vw, 82px)/1.3 'Great Vibes', cursive;
+  color: #f8ead5;
+  margin: 18px 0;
+}
+
+.hero-content p {
+  font-size: 14px;
+  line-height: 2.2;
+  font-weight: 300;
+}
+
+/* ===== GENERAL SECTIONS ===== */
+
+section {
+  padding: 75px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font: 48px 'Great Vibes', cursive;
+  color: #283b55;
+  margin: 0 0 12px;
+}
+
+.section-desc {
+  font-size: 13px;
+  color: #8b8076;
+}
+
+.countdown {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 35px 0 18px;
+}
+
+.time-box {
+  width: 90px;
+  background: white;
+  border: 1px solid #e0d3c1;
+  border-radius: 7px;
+  padding: 20px 10px;
+}
+
+.time-box strong {
+  display: block;
+  font: 32px 'Playfair Display', serif;
+}
+
+.time-box span {
+  font-size: 10px;
+  color: #9b8871;
+}
+
+#venue {
+  background: #f3efe9;
+}
+
+.venue-image {
+  max-width: 600px;
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  border-radius: 9px;
+  margin-top: 30px;
+}
+
+.venue-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  margin: 25px 0 10px;
+}
+
+/* ===== GALLERY ===== */
+
+.gallery-main {
+  width: min(700px, 100%);
+  height: 410px;
+  object-fit: cover;
+  border-radius: 9px;
+  margin: 25px auto 12px;
+  display: block;
+}
+
+.thumbnails {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  max-width: 700px;
+  margin: auto;
+}
+
+.thumbnails button {
+  border: 2px solid transparent;
+  background: transparent;
+  padding: 0;
+  width: 33.33%;
+  height: 110px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.thumbnails button.selected {
+  border-color: var(--gold);
+}
+
+.thumbnails img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== RSVP ===== */
+
+#rsvp {
+  background: #f3efe9;
+}
+
+.rsvp-form {
+  max-width: 450px;
+  margin: 35px auto 0;
+  text-align: left;
+  display: grid;
+  gap: 18px;
+}
+
+.rsvp-form label {
+  font-size: 13px;
+  color: #516078;
+}
+
+.rsvp-form input,
+.rsvp-form select {
+  display: block;
+  margin-top: 8px;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d6cec2;
+  border-radius: 6px;
+  background: white;
+  font-family: 'Prompt', sans-serif;
+}
+
+.rsvp-form .btn {
+  width: 100%;
+}
+
+#rsvp-success {
+  display: none;
+  text-align: center;
+  color: #367252;
+}
+
+footer {
+  background: var(--navy);
+  color: #edddc8;
+  text-align: center;
+  padding: 65px 20px;
+}
+
+footer .script {
+  font-size: 45px;
+}
+
+footer small {
+  color: var(--gold);
+  letter-spacing: 3px;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 600px) {
+  nav { padding: 12px 16px; }
+  .nav-links { gap: 10px; }
+  .nav-links a { font-size: 10px; }
+  .hero-photo { height: 390px; }
+  .gallery-main { height: 250px; }
+  .thumbnails button { height: 75px; }
+  .time-box { width: 72px; padding: 15px 6px; }
+  section { padding: 55px 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPEN ENVELOPE -->
+
+<div id="intro">
+  <span class="intro-flower flower-top">🪻</span>
+  <span class="intro-flower flower-bottom">🪻</span>
+
+  <div class="monogram">K&P</div>
+
+  <div class="intro-heading">
+    THE WEDDING INVITATION
+  </div>
+
+  <div class="gold-line"></div>
+
+  <p>A special invitation for you</p>
+
+  <div class="envelope" id="envelope" onclick="openInvitation()">
+    <div class="env-back"></div>
+    <div class="env-letter">
+      <small>THE WEDDING OF</small>
+      <h2>Kongkrit<br>& Paweenuch</h2>
+      <small>YOU ARE INVITED ♡</small>
+    </div>
+    <div class="env-front"></div>
+    <div class="env-flap"></div>
+    <div class="seal">K&P</div>
+  </div>
+
+  <button class="btn" onclick="openInvitation()">
+    OPEN INVITATION ♡
+  </button>
+
+  <p style="font-size:11px;letter-spacing:3px;margin-top:35px">
+    FOREVER & ALWAYS
+  </p>
+</div>
+
+<!-- WEDDING WEBSITE -->
+
+<div id="website">
+
+  <nav>
+    <div class="logo">K&P</div>
+    <div class="nav-links">
+      <a href="#home">HOME</a>
+      <a href="#countdown-section">DETAILS</a>
+      <a href="#gallery">GALLERY</a>
+      <a href="#rsvp">RSVP</a>
+    </div>
+  </nav>
+
+  <div class="hero" id="home">
+    <div class="hero-photo">
+      <img
+        src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1400"
+        alt="Wedding couple">
+    </div>
+
+    <div class="hero-content">
+      <small style="letter-spacing:4px;color:#d8b888">
+        THE WEDDING OF
+      </small>
+
+      <h1>Kongkrit & Paweenuch</h1>
+
+      <div class="gold-line"></div>
+
+      <p>
+        ด้วยความรักและความยินดี<br>
+        เราขอเรียนเชิญท่านร่วมเป็นเกียรติ<br>
+        ในพิธีมงคลสมรสของเราทั้งสอง
+      </p>
+
+      <p style="font-size:24px;color:#c8a773">❀ ♡ ❀</p>
+    </div>
+  </div>
+
+  <!-- COUNTDOWN -->
+
+  <section id="countdown-section">
+    <h2 class="section-title">Our Special Day</h2>
+    <p class="section-desc">นับถอยหลังสู่วันสำคัญของเรา</p>
+
+    <div class="countdown">
+      <div class="time-box">
+        <strong id="days">--</strong><span>DAYS</span>
+      </div>
+      <div class="time-box">
+        <strong id="hours">--</strong><span>HOURS</span>
+      </div>
+      <div class="time-box">
+        <strong id="minutes">--</strong><span>MINUTES</span>
+      </div>
+      <div class="time-box">
+        <strong id="seconds">--</strong><span>SECONDS</span>
+      </div>
+    </div>
+
+    <p id="wedding-date-label" class="section-desc">
+      Wedding date to be announced
+    </p>
+  </section>
+
+  <!-- VENUE -->
+
+  <section id="venue">
+    <h2 class="section-title">Wedding Venue</h2>
+    <p class="section-desc">สถานที่จัดงานมงคลสมรส</p>
+
+    <img
+      class="venue-image"
+      src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1000"
+      alt="Wedding venue example">
+
+    <div class="venue-name" id="venue-name">
+      VENUE COMING SOON
+    </div>
+
+    <p class="section-desc" id="venue-description">
+      จะแจ้งรายละเอียดสถานที่จัดงานให้ทราบภายหลัง
+    </p>
+
+    <button class="btn" id="maps-button" disabled>
+      VIEW GOOGLE MAPS
+    </button>
+  </section>
+
+  <!-- GALLERY -->
+
+  <section id="gallery">
+    <h2 class="section-title">Our Love Gallery</h2>
+
+    <p class="section-desc">
+      Every moment with you is a beautiful memory
+    </p>
+
+    <img
+      id="gallery-main"
+      class="gallery-main"
+      src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200"
+      alt="Wedding gallery">
+
+    <div class="thumbnails">
+
+      <button class="selected" onclick="changePhoto(this, 0)">
+        <img
+          src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400"
+          alt="Gallery photo 1">
+      </button>
+
+      <button onclick="changePhoto(this, 1)">
+        <img
+          src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=400"
+          alt="Gallery photo 2">
+      </button>
+
+      <button onclick="changePhoto(this, 2)">
+        <img
+          src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400"
+          alt="Gallery photo 3">
+      </button>
+    </div>
+
+    <p class="section-desc">
+      ภาพประกอบตัวอย่าง สามารถเปลี่ยนเป็นภาพ Pre-Wedding ได้
+    </p>
+  </section>
+
+  <!-- RSVP -->
+
+  <section id="rsvp">
+    <h2 class="section-title">Kindly RSVP</h2>
+
+    <p class="section-desc">
+      กรุณาตอบรับคำเชิญเข้าร่วมงานของเรา
+    </p>
+
+    <form class="rsvp-form" id="rsvp-form">
+
+      <label>
+        ชื่อ - นามสกุล
+        <input type="text" name="guestName"
+               placeholder="กรุณากรอกชื่อของคุณ" required>
+      </label>
+
+      <label>
+        การตอบรับ
+        <select name="attendance" id="attendance"
+                onchange="toggleGuests()">
+          <option value="yes">ยินดีเข้าร่วมงาน</option>
+          <option value="no">ไม่สะดวกเข้าร่วมงาน</option>
+        </select>
+      </label>
+
+      <label id="guest-count">
+        จำนวนผู้เข้าร่วม
+        <select name="guests">
+          <option value="1">1 คน</option>
+          <option value="2">2 คน</option>
+          <option value="3">3 คน</option>
+          <option value="4">4 คน</option>
+          <option value="5">5 คน</option>
+        </select>
+      </label>
+
+      <button type="submit" class="btn">
+        ส่งคำตอบ RSVP ♡
+      </button>
+
+      <div id="rsvp-success">
+        ♡ ขอบคุณสำหรับการตอบรับคำเชิญ
+      </div>
+
+      <p class="section-desc">
+        ระบบตัวอย่าง ยังไม่มีการบันทึกข้อมูลลงฐานข้อมูล
+      </p>
+
+    </form>
+  </section>
+
+  <footer>
+    <div class="script">
+      With Love,<br>
+      Kongkrit & Paweenuch
+    </div>
+
+    <div class="gold-line"></div>
+
+    <small>FOREVER & ALWAYS ♡</small>
+  </footer>
+
+</div>
+
+<script>
+/* ===== CONFIGURATION ===== */
+
+// กำหนดวันแต่งงานภายหลัง เช่น
+// "2027-03-20T09:00:00+07:00"
+const WEDDING_DATE = "";
+
+// ชื่อสถานที่จัดงาน (เว้นว่างได้)
+const VENUE_NAME = "";
+
+// ลิงก์ Google Maps ที่ยืนยันแล้ว
+const GOOGLE_MAPS_URL = "";
+
+// รูปภาพ Gallery
+const galleryPhotos = [
+  "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200",
+  "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1200",
+  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200"
+];
+
+/* ===== ENVELOPE ===== */
+
+let opening = false;
+
+function openInvitation() {
+  if (opening) return;
+  opening = true;
+
+  document.getElementById("envelope").classList.add("open");
+
+  setTimeout(() => {
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("website").style.display = "block";
+    window.scrollTo(0, 0);
+  }, 1100);
+}
+
+/* ===== COUNTDOWN ===== */
+
+function updateCountdown() {
+  if (!WEDDING_DATE) return;
+
+  const target = new Date(WEDDING_DATE).getTime();
+  if (isNaN(target)) return;
+
+  const diff = Math.max(0, target - Date.now());
+
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff / 3600000) % 24);
+  const minutes = Math.floor((diff / 60000) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = seconds;
+
+  document.getElementById("wedding-date-label").textContent =
+    new Date(WEDDING_DATE).toLocaleString("th-TH", {
+      dateStyle: "long",
+      timeStyle: "short",
+      timeZone: "Asia/Bangkok"
+    });
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+/* ===== GOOGLE MAPS ===== */
+
+if (VENUE_NAME) {
+  document.getElementById("venue-name").textContent = VENUE_NAME;
+}
+
+if (GOOGLE_MAPS_URL) {
+  const mapsButton = document.getElementById("maps-button");
+  mapsButton.disabled = false;
+  mapsButton.onclick = () => {
+    window.open(GOOGLE_MAPS_URL, "_blank", "noopener,noreferrer");
+  };
+}
+
+/* ===== GALLERY ===== */
+
+function changePhoto(button, index) {
+  document.getElementById("gallery-main").src = galleryPhotos[index];
+
+  document.querySelectorAll(".thumbnails button")
+    .forEach(btn => btn.classList.remove("selected"));
+
+  button.classList.add("selected");
+}
+
+/* ===== RSVP ===== */
+
+function toggleGuests() {
+  const attendance = document.getElementById("attendance").value;
+
+  document.getElementById("guest-count").style.display =
+    attendance === "no" ? "none" : "block";
+}
+
+document.getElementById("rsvp-form")
+  .addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Demo only: no guest information is stored or submitted.
+    document.getElementById("rsvp-success").style.display = "block";
+  });
+</script>
+
+</body>
+</html>
