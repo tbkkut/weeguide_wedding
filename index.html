@@ -1,807 +1,285 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kongkrit & Paweenuch | Wedding Invitation</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --navy: #101e32;
-  --navy-light: #253b58;
-  --gold: #c8a773;
-  --ivory: #fbf8f3;
-}
-
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  background: var(--ivory);
-  font-family: 'Prompt', sans-serif;
-  color: #27334a;
-}
-
-button { cursor: pointer; }
-
-h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-}
-
-.script {
-  font-family: 'Great Vibes', cursive;
-  font-weight: 400;
-}
-
-.gold-line {
-  height: 1px;
-  width: 90px;
-  margin: 22px auto;
-  background: var(--gold);
-}
-
-.btn {
-  border: 1px solid var(--gold);
-  border-radius: 40px;
-  background: var(--navy);
-  color: #f7e5c5;
-  padding: 14px 30px;
-  font-family: 'Prompt', sans-serif;
-  transition: .3s;
-}
-
-.btn:hover {
-  background: #3c5475;
-  transform: translateY(-2px);
-}
-
-/* ===== ENVELOPE INTRO ===== */
-
-#intro {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at top left, #385276, transparent 45%),
-    linear-gradient(140deg, #091321, #182c47);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  color: white;
-  padding: 35px 20px;
-}
-
-.intro-flower {
-  position: absolute;
-  font-size: 100px;
-  opacity: .45;
-  pointer-events: none;
-}
-
-.flower-top {
-  top: -25px;
-  left: -20px;
-}
-
-.flower-bottom {
-  bottom: -30px;
-  right: -20px;
-  transform: rotate(170deg);
-}
-
-.monogram {
-  width: 110px;
-  height: 110px;
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font: 48px 'Great Vibes', cursive;
-  color: #e5c99b;
-}
-
-.intro-heading {
-  letter-spacing: 4px;
-  font-family: 'Playfair Display', serif;
-  margin-top: 35px;
-}
-
-.envelope {
-  width: min(330px, 86vw);
-  height: 220px;
-  position: relative;
-  margin: 45px 0 32px;
-  perspective: 1000px;
-  filter: drop-shadow(0 15px 18px #0008);
-  cursor: pointer;
-}
-
-.env-back {
-  position: absolute;
-  inset: 0;
-  background: #40516a;
-  border-radius: 5px;
-}
-
-.env-letter {
-  position: absolute;
-  width: 84%;
-  height: 170px;
-  left: 8%;
-  bottom: 15px;
-  background: #fffaf0;
-  border: 3px double #d0b388;
-  color: #20334c;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: transform 1s .2s;
-}
-
-.env-letter h2 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 36px;
-  line-height: 1.2;
-  margin: 15px 0;
-}
-
-.env-front {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(130deg, #1a2a40, #2e4765);
-  clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
-  z-index: 3;
-}
-
-.env-flap {
-  position: absolute;
-  inset: 0;
-  background: #38516f;
-  clip-path: polygon(0 0, 100% 0, 50% 54%);
-  transform-origin: top;
-  transition: transform .7s;
-  z-index: 4;
-}
-
-.seal {
-  position: absolute;
-  top: 88px;
-  left: calc(50% - 30px);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 25%, #f4dcac, #9f7339);
-  display: grid;
-  place-items: center;
-  font-family: 'Great Vibes', cursive;
-  font-size: 24px;
-  color: white;
-  z-index: 5;
-  border: 4px double #f4d59d;
-  transition: opacity .3s;
-}
-
-.envelope.open .env-flap {
-  transform: rotateX(180deg);
-  z-index: 0;
-}
-
-.envelope.open .seal {
-  opacity: 0;
-}
-
-.envelope.open .env-letter {
-  transform: translateY(-105px);
-  z-index: 2;
-}
-
-/* ===== MAIN WEBSITE ===== */
-
-#website { display: none; }
-
-nav {
-  background: var(--navy);
-  color: #e3c59a;
-  padding: 16px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  position: sticky;
-  top: 0;
-  z-index: 20;
-}
-
-.logo {
-  font: 35px 'Great Vibes', cursive;
-}
-
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.nav-links a {
-  color: #f1e7d7;
-  text-decoration: none;
-  font-size: 12px;
-}
-
-/* ===== HERO ===== */
-
-.hero {
-  background: var(--navy);
-  color: white;
-  text-align: center;
-  padding-bottom: 70px;
-}
-
-.hero-photo {
-  height: 540px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(transparent 45%, var(--navy));
-}
-
-.hero-content {
-  position: relative;
-  margin-top: -100px;
-  padding: 0 20px;
-}
-
-.hero-content h1 {
-  font: clamp(46px, 8vw, 82px)/1.3 'Great Vibes', cursive;
-  color: #f8ead5;
-  margin: 18px 0;
-}
-
-.hero-content p {
-  font-size: 14px;
-  line-height: 2.2;
-  font-weight: 300;
-}
-
-/* ===== GENERAL SECTIONS ===== */
-
-section {
-  padding: 75px 20px;
-  text-align: center;
-}
-
-.section-title {
-  font: 48px 'Great Vibes', cursive;
-  color: #283b55;
-  margin: 0 0 12px;
-}
-
-.section-desc {
-  font-size: 13px;
-  color: #8b8076;
-}
-
-.countdown {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 35px 0 18px;
-}
-
-.time-box {
-  width: 90px;
-  background: white;
-  border: 1px solid #e0d3c1;
-  border-radius: 7px;
-  padding: 20px 10px;
-}
-
-.time-box strong {
-  display: block;
-  font: 32px 'Playfair Display', serif;
-}
-
-.time-box span {
-  font-size: 10px;
-  color: #9b8871;
-}
-
-#venue {
-  background: #f3efe9;
-}
-
-.venue-image {
-  max-width: 600px;
-  width: 100%;
-  height: 290px;
-  object-fit: cover;
-  border-radius: 9px;
-  margin-top: 30px;
-}
-
-.venue-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  margin: 25px 0 10px;
-}
-
-/* ===== GALLERY ===== */
-
-.gallery-main {
-  width: min(700px, 100%);
-  height: 410px;
-  object-fit: cover;
-  border-radius: 9px;
-  margin: 25px auto 12px;
-  display: block;
-}
-
-.thumbnails {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  max-width: 700px;
-  margin: auto;
-}
-
-.thumbnails button {
-  border: 2px solid transparent;
-  background: transparent;
-  padding: 0;
-  width: 33.33%;
-  height: 110px;
-  border-radius: 7px;
-  overflow: hidden;
-}
-
-.thumbnails button.selected {
-  border-color: var(--gold);
-}
-
-.thumbnails img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ===== RSVP ===== */
-
-#rsvp {
-  background: #f3efe9;
-}
-
-.rsvp-form {
-  max-width: 450px;
-  margin: 35px auto 0;
-  text-align: left;
-  display: grid;
-  gap: 18px;
-}
-
-.rsvp-form label {
-  font-size: 13px;
-  color: #516078;
-}
-
-.rsvp-form input,
-.rsvp-form select {
-  display: block;
-  margin-top: 8px;
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #d6cec2;
-  border-radius: 6px;
-  background: white;
-  font-family: 'Prompt', sans-serif;
-}
-
-.rsvp-form .btn {
-  width: 100%;
-}
-
-#rsvp-success {
-  display: none;
-  text-align: center;
-  color: #367252;
-}
-
-footer {
-  background: var(--navy);
-  color: #edddc8;
-  text-align: center;
-  padding: 65px 20px;
-}
-
-footer .script {
-  font-size: 45px;
-}
-
-footer small {
-  color: var(--gold);
-  letter-spacing: 3px;
-}
-
-/* ===== MOBILE ===== */
-
-@media (max-width: 600px) {
-  nav { padding: 12px 16px; }
-  .nav-links { gap: 10px; }
-  .nav-links a { font-size: 10px; }
-  .hero-photo { height: 390px; }
-  .gallery-main { height: 250px; }
-  .thumbnails button { height: 75px; }
-  .time-box { width: 72px; padding: 15px 6px; }
-  section { padding: 55px 18px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1728">
+  <meta name="description" content="คำเชิญงานแต่งงาน Paweenuch & Kongkrit">
+  <title>Paweenuch & Kongkrit | Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {--navy:#0b1728;--navy-soft:#172a44;--navy-light:#2d4564;--gold:#c9a66d;--gold-light:#f1d9aa;--ivory:#fcf9f3;--ink:#26354b;--muted:#857d73}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:75px}
+    body{margin:0;font-family:Prompt,system-ui,sans-serif;color:var(--ink);background:var(--ivory)}
+    button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.5}
+    a{color:inherit}img{display:block;max-width:100%}
+    .script{font-family:'Great Vibes',cursive;font-weight:400}
+    .serif{font-family:'Playfair Display',Georgia,serif;font-weight:400}
+    .eyebrow{font-size:.69rem;letter-spacing:.3em;text-transform:uppercase}
+    .gold-rule{height:1px;width:95px;margin:19px auto;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+    .btn{border:1px solid var(--gold);background:linear-gradient(125deg,#13253d,#304966);color:#f6e7c6;border-radius:100px;padding:14px 28px;letter-spacing:.09em;font-size:.78rem;transition:transform .25s,box-shadow .25s;box-shadow:0 7px 22px #0108133d}
+    .btn:hover:not(:disabled){transform:translateY(-3px);box-shadow:0 10px 28px #01081355}
+    .btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #dab774;outline-offset:4px}
+    /* Opening scene */
+    #intro{isolation:isolate;min-height:100svh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:72px 20px 55px;overflow:hidden;text-align:center;color:#fff7e8;background:radial-gradient(ellipse at 5% 8%,#334d72 0,transparent 35%),radial-gradient(ellipse at 95% 87%,#1a4260 0,transparent 36%),linear-gradient(145deg,#071120,#14263c 60%,#091422)}
+    #intro::before{content:"";position:absolute;z-index:-2;inset:-30%;background:radial-gradient(circle at 35% 40%,#c89b4730,transparent 30%),radial-gradient(circle at 70% 70%,#8eb8ec22,transparent 32%);animation:ambient 12s ease-in-out infinite alternate;pointer-events:none}
+    #intro::after{content:"";position:absolute;z-index:-2;inset:0;opacity:.19;background-image:radial-gradient(#e0c58e 0.7px,transparent 0.9px);background-size:33px 33px;pointer-events:none}
+    @keyframes ambient{to{transform:translate(7%,-4%) rotate(10deg)}}
+    .corner-flower{position:absolute;z-index:-1;pointer-events:none;width:260px;max-width:50vw;opacity:.66;filter:drop-shadow(0 8px 24px #0005)}
+    .corner-flower.top{top:-55px;left:-80px;transform:rotate(-25deg)}
+    .corner-flower.bottom{bottom:-85px;right:-80px;transform:rotate(145deg)}
+    .flower-cluster{font-size:clamp(90px,14vw,160px);line-height:1;filter:saturate(.64)}
+    #intro .eyebrow{color:#e2c999;animation:rise 1s .15s both}
+    .monogram{font:clamp(46px,8vw,70px) 'Great Vibes',cursive;width:126px;height:126px;display:grid;place-items:center;color:#f6d9a7;border:1px solid #c4a369;border-radius:50%;box-shadow:0 0 0 9px #bda46c10,0 0 48px #c5a46e22;animation:rise 1s .3s both,monogramGlow 4s ease-in-out 1.2s infinite}
+    @keyframes monogramGlow{50%{box-shadow:0 0 0 10px #bda46c14,0 0 60px #e8c88f66}}
+    .intro-heading{font:400 clamp(18px,3.5vw,25px) 'Playfair Display',serif;letter-spacing:.17em;margin:28px 0 3px;animation:rise 1s .45s both}
+    .intro-sub{font:italic 17px 'Playfair Display',serif;color:#dccdb7;animation:rise 1s .6s both}
+    @keyframes rise{from{opacity:0;transform:translateY(30px);filter:blur(8px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+    .envelope-wrap{position:relative;width:min(360px,84vw);height:245px;margin:32px auto 28px;perspective:1100px;filter:drop-shadow(0 18px 22px #000a);animation:envelopeArrive 1.5s .65s both,envelopeFloat 4s ease-in-out 2.15s infinite;cursor:pointer}
+    @keyframes envelopeArrive{from{opacity:0;transform:translateY(95px) scale(.72);filter:blur(12px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+    @keyframes envelopeFloat{50%{transform:translateY(-12px)}}
+    .envelope-wrap.open{animation:none;filter:drop-shadow(0 19px 25px #0008)}
+    .env-back{position:absolute;inset:0;background:#4a6080;border-radius:5px}
+    .env-letter{position:absolute;left:8%;bottom:16px;width:84%;height:205px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(140deg,#fffaf1,#e9dfcd);border:4px double #d0b98e;color:#203650;box-shadow:0 4px 14px #06142566;transition:transform 1.2s cubic-bezier(.2,.8,.2,1) .36s;z-index:1}
+    .env-letter small{font-size:9px;letter-spacing:.2em}
+    .env-letter .names{font:38px/1.06 'Great Vibes',cursive;margin:14px 0 8px}
+    .env-front{position:absolute;inset:0;z-index:3;background:linear-gradient(135deg,#1a2b45,#324b6b);clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%)}
+    .env-flap{position:absolute;inset:0;z-index:4;background:linear-gradient(#4c6586,#2b4465);clip-path:polygon(0 0,100% 0,50% 55%);transform-origin:50% 0;transition:transform .82s cubic-bezier(.2,.7,.2,1)}
+    .seal{position:absolute;z-index:5;top:104px;left:calc(50% - 33px);width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font:27px 'Great Vibes',cursive;color:#fff4df;background:radial-gradient(circle at 30% 20%,#f9e7bb,#bd9253 66%,#88602f);border:5px double #ffe1a0;box-shadow:0 0 24px #e6bf7777,0 4px 12px #0008;animation:sealPulse 3s ease-in-out infinite;transition:opacity .25s,transform .6s}
+    @keyframes sealPulse{50%{box-shadow:0 0 32px #e4bb83,0 0 66px #c9934b77,0 4px 12px #0008}}
+    .envelope-wrap.open .env-flap{transform:rotateX(180deg);z-index:0}
+    .envelope-wrap.open .env-letter{transform:translateY(-116px);z-index:2}
+    .envelope-wrap.open .seal{opacity:0;transform:scale(1.45);pointer-events:none}
+    .envelope-wrap.open::after{content:"";position:absolute;inset:40%;z-index:8;border:2px solid #f9dc9f;border-radius:50%;pointer-events:none;animation:magicRing 1.2s ease-out forwards}
+    @keyframes magicRing{to{transform:scale(17);opacity:0}}
+    #openBtn{animation:rise 1s 1.1s both;background:linear-gradient(120deg,#503b24,#9e7743,#4e3923)}
+    .intro-note{font-size:.66rem;letter-spacing:.25em;margin-top:22px;color:#d4b989}
+    .particle{position:absolute;pointer-events:none;top:-35px;z-index:0;color:#e9c68c;font-size:var(--size,14px);left:var(--left,50%);animation:petalFall var(--duration,10s) linear var(--delay,0s) infinite;opacity:0}
+    @keyframes petalFall{0%{transform:translate3d(0,-10px,0) rotate(0);opacity:0}12%{opacity:.75}88%{opacity:.65}100%{transform:translate3d(var(--drift,60px),110svh,0) rotate(430deg);opacity:0}}
+    .burst{position:absolute;left:50%;top:55%;z-index:9;width:6px;height:6px;background:#ffe5ae;border-radius:50%;box-shadow:0 0 12px #f5d19a;pointer-events:none;animation:burst .9s ease-out forwards}
+    @keyframes burst{to{opacity:0;transform:translate(var(--x),var(--y)) scale(.25)}}
+    #intro.exit{animation:sceneExit .85s ease-in forwards}
+    @keyframes sceneExit{to{opacity:0;filter:blur(12px);transform:scale(1.045)}}
+    /* Website */
+    #website[hidden],#intro[hidden]{display:none!important}
+    #website.reveal{animation:siteEnter 1s ease-out both}
+    @keyframes siteEnter{from{opacity:0;filter:blur(8px);transform:translateY(25px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+    .nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;background:#0d1d30f4;backdrop-filter:blur(12px);padding:12px clamp(16px,6vw,65px);color:#f7eddf}
+    .nav-brand{font:35px 'Great Vibes',cursive;color:#eed0a0;text-decoration:none;white-space:nowrap}
+    .nav-links{display:flex;align-items:center;gap:clamp(9px,2.8vw,28px)}
+    .nav-links a{text-decoration:none;font-size:clamp(10px,1.5vw,12px);letter-spacing:.08em}
+    .hero{position:relative;text-align:center;background:var(--navy);color:#fff9ed;padding-bottom:58px}
+    .hero-image{position:relative;height:min(70vw,570px);min-height:335px;overflow:hidden}
+    .hero-image img{width:100%;height:100%;object-fit:cover;object-position:center 40%;animation:heroZoom 14s ease-out both}
+    @keyframes heroZoom{from{transform:scale(1.1)}to{transform:scale(1)}}
+    .hero-image::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,#0b1728 99%)}
+    .hero-content{position:relative;margin:-95px auto 0;padding:0 20px;max-width:780px}
+    .hero-content .eyebrow{color:#d8bd8c}
+    .hero h1{font:clamp(55px,9vw,96px)/1.2 'Great Vibes',cursive;margin:22px 0 12px;color:#fff2dd}
+    .hero-description{line-height:2.2;font-size:clamp(13px,2vw,16px);font-weight:300}
+    .section{padding:clamp(55px,7vw,90px) 20px;text-align:center}
+    .section:nth-of-type(even){background:#f4f0e9}
+    .section-heading{font:clamp(44px,6.5vw,62px) 'Great Vibes',cursive;margin:0 0 5px;color:var(--ink)}
+    .section-description{color:var(--muted);font-size:13px;line-height:1.8;margin:8px 0}
+    .countdown{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:34px 0 20px}
+    .timebox{min-width:82px;padding:17px 8px;border:1px solid #e5d5bd;border-radius:8px;background:#fff;box-shadow:0 5px 17px #1a284014}
+    .timebox strong{display:block;font:32px 'Playfair Display',serif;font-weight:400;color:#233750}
+    .timebox span{font-size:9px;letter-spacing:.13em;color:#917b59}
+    .venue-photo{display:block;width:min(700px,100%);max-height:370px;aspect-ratio:16/9;object-fit:cover;margin:28px auto;border-radius:10px}
+    .venue-name{font:23px 'Playfair Display',serif;margin:20px 0 4px}
+    .gallery-main{display:block;width:min(720px,100%);height:clamp(250px,46vw,450px);margin:28px auto 12px;object-fit:cover;border-radius:9px;transition:opacity .25s}
+    .gallery-thumbs{display:flex;gap:9px;max-width:720px;margin:auto}
+    .thumb{flex:1;min-width:0;height:clamp(65px,14vw,125px);padding:0;background:none;border:3px solid transparent;border-radius:8px;overflow:hidden}
+    .thumb.active{border-color:var(--gold)}
+    .thumb img{height:100%;width:100%;object-fit:cover}
+    .rsvp-form{max-width:440px;margin:32px auto 0;text-align:left;display:grid;gap:17px}
+    .rsvp-form label{font-size:13px;color:#4d6079}
+    .rsvp-form input,.rsvp-form select{width:100%;padding:12px 14px;margin-top:6px;background:#fff;border:1px solid #d6cec1;border-radius:6px;color:#1d304a}
+    .rsvp-form .btn{width:100%}
+    .demo-note{font-size:11px;color:#918679;line-height:1.7}
+    #rsvpMessage{padding:13px;border-radius:6px;background:#e6f1e9;color:#2d7050;text-align:center}
+    .footer{background:#101e32;color:#ead8ba;padding:65px 20px;text-align:center}
+    .footer .script{font-size:clamp(35px,7vw,55px);line-height:1.35}
+    .footer small{display:block;letter-spacing:.22em;color:#c6a579;margin-top:18px;font-size:10px}
+    .skip-link{position:absolute;left:-9999px}.skip-link:focus{left:16px;top:16px;z-index:99;background:white;padding:10px;color:#111}
+    @media(max-width:500px){.nav{padding:10px 14px}.nav-links{gap:10px}.nav-links a{font-size:10px}.hero-image{height:390px}.hero-content{margin-top:-75px}.corner-flower{max-width:53vw}.monogram{width:103px;height:103px;font-size:52px}.intro-heading{font-size:17px}.envelope-wrap{margin-top:32px}.timebox{min-width:69px;padding:14px 7px}.timebox strong{font-size:27px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+    /* Background soundtrack: user-triggered for browser autoplay policy */
+    .music-toggle{position:fixed;right:18px;bottom:18px;z-index:60;border:1px solid #e0bd7f;border-radius:99px;padding:12px 17px;background:#14263dea;color:#f9e7c5;box-shadow:0 9px 25px #0005;font-size:12px;display:none;align-items:center;gap:8px;backdrop-filter:blur(9px)}
+    .music-toggle.visible{display:flex}
+    .music-toggle:focus-visible{outline:3px solid #f1d9aa;outline-offset:3px}
+    .music-toggle[aria-pressed="true"] .music-note{animation:musicPulse 1.5s ease-in-out infinite}
+    @keyframes musicPulse{50%{transform:scale(1.22);color:#fff}}
+  </style>
 </head>
-
 <body>
-
-<!-- OPEN ENVELOPE -->
-
-<div id="intro">
-  <span class="intro-flower flower-top">🪻</span>
-  <span class="intro-flower flower-bottom">🪻</span>
-
-  <div class="monogram">K&P</div>
-
-  <div class="intro-heading">
-    THE WEDDING INVITATION
-  </div>
-
-  <div class="gold-line"></div>
-
-  <p>A special invitation for you</p>
-
-  <div class="envelope" id="envelope" onclick="openInvitation()">
+<audio id="backgroundMusic" src="wedding-music.mp3" preload="none" loop></audio>
+<button id="musicToggle" class="music-toggle" type="button" aria-label="ปิดเสียงเพลง" aria-pressed="false"><span class="music-note" aria-hidden="true">♫</span><span id="musicLabel">เปิดเพลง</span></button>
+<a href="#main" class="skip-link" id="skipMain" hidden>ข้ามไปหน้าเว็บไซต์</a>
+<section id="intro" aria-label="เปิดซองจดหมายเชิญงานแต่ง">
+  <div class="corner-flower top flower-cluster" aria-hidden="true">🪻❀</div>
+  <div class="corner-flower bottom flower-cluster" aria-hidden="true">🪻❀</div>
+  <div class="monogram" aria-label="K and P">K&P</div>
+  <h1 class="intro-heading">THE WEDDING INVITATION</h1>
+  <div class="gold-rule"></div>
+  <p class="intro-sub">A special invitation, just for you</p>
+  <div class="envelope-wrap" id="envelope" role="button" tabindex="0" aria-label="เปิดซองจดหมาย">
     <div class="env-back"></div>
-    <div class="env-letter">
-      <small>THE WEDDING OF</small>
-      <h2>Kongkrit<br>& Paweenuch</h2>
-      <small>YOU ARE INVITED ♡</small>
-    </div>
-    <div class="env-front"></div>
-    <div class="env-flap"></div>
-    <div class="seal">K&P</div>
+    <div class="env-letter"><small>THE WEDDING OF</small><div class="names">Paweenuch<br>& Kongkrit</div><small>YOU ARE INVITED ♡</small></div>
+    <div class="env-front"></div><div class="env-flap"></div><div class="seal">K&P</div>
   </div>
-
-  <button class="btn" onclick="openInvitation()">
-    OPEN INVITATION ♡
-  </button>
-
-  <p style="font-size:11px;letter-spacing:3px;margin-top:35px">
-    FOREVER & ALWAYS
-  </p>
+  <button class="btn" id="openBtn">OPEN INVITATION ♡</button>
+  <p class="intro-note">17 JANUARY 2027 · FOREVER & ALWAYS</p>
+</section>
+<div id="website" hidden>
+  <nav class="nav"><a class="nav-brand" href="#home">K&P</a><div class="nav-links"><a href="#home">HOME</a><a href="#details">DETAILS</a><a href="#gallery">GALLERY</a><a href="#rsvp">RSVP</a></div></nav>
+  <main id="main">
+    <header class="hero" id="home">
+      <div class="hero-image"><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1600&q=85" alt="ภาพตัวอย่างคู่บ่าวสาว" fetchpriority="high"></div>
+      <div class="hero-content"><div class="eyebrow">THE WEDDING OF</div><h1>Paweenuch & Kongkrit</h1><p class="eyebrow" style="color:#e6c58c">17 JANUARY 2027 · 17 มกราคม 2570</p><div class="gold-rule"></div><p class="hero-description">ด้วยความรักและความยินดี<br>เราขอเรียนเชิญท่านร่วมเป็นเกียรติ<br>ในพิธีมงคลสมรสของเราทั้งสอง</p><p style="font-size:25px;color:#cfae79" aria-hidden="true">✧ ♡ ✧</p></div>
+    </header>
+    <section class="section" id="details"><h2 class="section-heading">Our Special Day</h2><p class="section-description">นับถอยหลังสู่วันสำคัญของเรา</p><div class="countdown"><div class="timebox"><strong id="days">--</strong><span>DAYS</span></div><div class="timebox"><strong id="hours">--</strong><span>HOURS</span></div><div class="timebox"><strong id="minutes">--</strong><span>MINUTES</span></div><div class="timebox"><strong id="seconds">--</strong><span>SECONDS</span></div></div><p class="section-description" id="dateLabel">วันอาทิตย์ที่ 17 มกราคม 2570</p><p class="demo-note">Countdown นับถึงเวลาเริ่มต้นของวันที่ 17 ม.ค. (00:00 น.) ไม่ใช่เวลาเริ่มพิธี</p></section>
+    <section class="section" id="venue"><h2 class="section-heading">Wedding Venue</h2><p class="section-description">สถานที่จัดงานมงคลสมรส</p><img class="venue-photo" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=85" alt="ภาพสถานที่จัดงานตัวอย่าง" loading="lazy"><h3 class="venue-name" id="venueName">VENUE COMING SOON</h3><p class="section-description">จะแจ้งรายละเอียดสถานที่จัดงานให้ทราบภายหลัง</p><button class="btn" type="button" id="mapsBtn" disabled>VIEW GOOGLE MAPS</button></section>
+    <section class="section" id="gallery"><h2 class="section-heading">Our Love Gallery</h2><p class="section-description">Every moment with you is a beautiful memory</p><img id="galleryMain" class="gallery-main" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=85" alt="ภาพแกลเลอรีตัวอย่าง" loading="lazy"><div class="gallery-thumbs"><button class="thumb active" type="button" data-index="0" aria-label="แสดงรูปที่ 1" aria-pressed="true"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=380&q=80" alt="" loading="lazy"></button><button class="thumb" type="button" data-index="1" aria-label="แสดงรูปที่ 2" aria-pressed="false"><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=380&q=80" alt="" loading="lazy"></button><button class="thumb" type="button" data-index="2" aria-label="แสดงรูปที่ 3" aria-pressed="false"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=380&q=80" alt="" loading="lazy"></button></div><p class="demo-note">รูปภาพเป็นเพียงภาพตัวอย่าง เปลี่ยนเป็นภาพ Pre-Wedding จริงภายหลังได้</p></section>
+    <section class="section" id="rsvp"><h2 class="section-heading">Kindly RSVP</h2><p class="section-description">กรุณาตอบรับคำเชิญเข้าร่วมงานของเรา</p><form class="rsvp-form" id="rsvpForm"><label>ชื่อ - นามสกุล<input name="guestName" type="text" maxlength="100" placeholder="กรุณากรอกชื่อของคุณ" required autocomplete="name"></label><label>การตอบรับ<select id="attendance" name="attendance"><option value="yes">ยินดีเข้าร่วมงาน</option><option value="no">ไม่สะดวกเข้าร่วมงาน</option></select></label><label id="guestCountLabel">จำนวนผู้เข้าร่วม<select name="guests"><option value="1">1 คน</option><option value="2">2 คน</option><option value="3">3 คน</option><option value="4">4 คน</option><option value="5">5 คน</option></select></label><button class="btn" type="submit">ส่งคำตอบ RSVP ♡</button><p id="rsvpMessage" role="status" hidden>♡ ขอบคุณสำหรับการตอบรับคำเชิญ (ทดลองเท่านั้น)</p><p class="demo-note">โหมดตัวอย่าง: ยังไม่มีการบันทึกหรือส่งข้อมูล RSVP ไปที่ใด</p></form></section>
+  </main>
+  <footer class="footer"><div class="script">With Love,<br>Paweenuch & Kongkrit</div><div class="gold-rule"></div><small>FOREVER & ALWAYS ♡</small><button class="btn" id="replayBtn" style="margin-top:27px" type="button">↶ REPLAY INVITATION</button></footer>
 </div>
-
-<!-- WEDDING WEBSITE -->
-
-<div id="website">
-
-  <nav>
-    <div class="logo">K&P</div>
-    <div class="nav-links">
-      <a href="#home">HOME</a>
-      <a href="#countdown-section">DETAILS</a>
-      <a href="#gallery">GALLERY</a>
-      <a href="#rsvp">RSVP</a>
-    </div>
-  </nav>
-
-  <div class="hero" id="home">
-    <div class="hero-photo">
-      <img
-        src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1400"
-        alt="Wedding couple">
-    </div>
-
-    <div class="hero-content">
-      <small style="letter-spacing:4px;color:#d8b888">
-        THE WEDDING OF
-      </small>
-
-      <h1>Kongkrit & Paweenuch</h1>
-
-      <div class="gold-line"></div>
-
-      <p>
-        ด้วยความรักและความยินดี<br>
-        เราขอเรียนเชิญท่านร่วมเป็นเกียรติ<br>
-        ในพิธีมงคลสมรสของเราทั้งสอง
-      </p>
-
-      <p style="font-size:24px;color:#c8a773">❀ ♡ ❀</p>
-    </div>
-  </div>
-
-  <!-- COUNTDOWN -->
-
-  <section id="countdown-section">
-    <h2 class="section-title">Our Special Day</h2>
-    <p class="section-desc">นับถอยหลังสู่วันสำคัญของเรา</p>
-
-    <div class="countdown">
-      <div class="time-box">
-        <strong id="days">--</strong><span>DAYS</span>
-      </div>
-      <div class="time-box">
-        <strong id="hours">--</strong><span>HOURS</span>
-      </div>
-      <div class="time-box">
-        <strong id="minutes">--</strong><span>MINUTES</span>
-      </div>
-      <div class="time-box">
-        <strong id="seconds">--</strong><span>SECONDS</span>
-      </div>
-    </div>
-
-    <p id="wedding-date-label" class="section-desc">
-      Wedding date to be announced
-    </p>
-  </section>
-
-  <!-- VENUE -->
-
-  <section id="venue">
-    <h2 class="section-title">Wedding Venue</h2>
-    <p class="section-desc">สถานที่จัดงานมงคลสมรส</p>
-
-    <img
-      class="venue-image"
-      src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1000"
-      alt="Wedding venue example">
-
-    <div class="venue-name" id="venue-name">
-      VENUE COMING SOON
-    </div>
-
-    <p class="section-desc" id="venue-description">
-      จะแจ้งรายละเอียดสถานที่จัดงานให้ทราบภายหลัง
-    </p>
-
-    <button class="btn" id="maps-button" disabled>
-      VIEW GOOGLE MAPS
-    </button>
-  </section>
-
-  <!-- GALLERY -->
-
-  <section id="gallery">
-    <h2 class="section-title">Our Love Gallery</h2>
-
-    <p class="section-desc">
-      Every moment with you is a beautiful memory
-    </p>
-
-    <img
-      id="gallery-main"
-      class="gallery-main"
-      src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200"
-      alt="Wedding gallery">
-
-    <div class="thumbnails">
-
-      <button class="selected" onclick="changePhoto(this, 0)">
-        <img
-          src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400"
-          alt="Gallery photo 1">
-      </button>
-
-      <button onclick="changePhoto(this, 1)">
-        <img
-          src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=400"
-          alt="Gallery photo 2">
-      </button>
-
-      <button onclick="changePhoto(this, 2)">
-        <img
-          src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400"
-          alt="Gallery photo 3">
-      </button>
-    </div>
-
-    <p class="section-desc">
-      ภาพประกอบตัวอย่าง สามารถเปลี่ยนเป็นภาพ Pre-Wedding ได้
-    </p>
-  </section>
-
-  <!-- RSVP -->
-
-  <section id="rsvp">
-    <h2 class="section-title">Kindly RSVP</h2>
-
-    <p class="section-desc">
-      กรุณาตอบรับคำเชิญเข้าร่วมงานของเรา
-    </p>
-
-    <form class="rsvp-form" id="rsvp-form">
-
-      <label>
-        ชื่อ - นามสกุล
-        <input type="text" name="guestName"
-               placeholder="กรุณากรอกชื่อของคุณ" required>
-      </label>
-
-      <label>
-        การตอบรับ
-        <select name="attendance" id="attendance"
-                onchange="toggleGuests()">
-          <option value="yes">ยินดีเข้าร่วมงาน</option>
-          <option value="no">ไม่สะดวกเข้าร่วมงาน</option>
-        </select>
-      </label>
-
-      <label id="guest-count">
-        จำนวนผู้เข้าร่วม
-        <select name="guests">
-          <option value="1">1 คน</option>
-          <option value="2">2 คน</option>
-          <option value="3">3 คน</option>
-          <option value="4">4 คน</option>
-          <option value="5">5 คน</option>
-        </select>
-      </label>
-
-      <button type="submit" class="btn">
-        ส่งคำตอบ RSVP ♡
-      </button>
-
-      <div id="rsvp-success">
-        ♡ ขอบคุณสำหรับการตอบรับคำเชิญ
-      </div>
-
-      <p class="section-desc">
-        ระบบตัวอย่าง ยังไม่มีการบันทึกข้อมูลลงฐานข้อมูล
-      </p>
-
-    </form>
-  </section>
-
-  <footer>
-    <div class="script">
-      With Love,<br>
-      Kongkrit & Paweenuch
-    </div>
-
-    <div class="gold-line"></div>
-
-    <small>FOREVER & ALWAYS ♡</small>
-  </footer>
-
-</div>
-
 <script>
-/* ===== CONFIGURATION ===== */
+  // ===== EDIT THESE SETTINGS LATER =====
+  const WEDDING_DATE = "2027-01-17T00:00:00+07:00"; // เริ่มนับวันแต่งงานในเวลา 00:00 ของประเทศไทย (ยังไม่ใช่เวลาพิธี)
+  const VENUE_NAME = ""; // actual venue name
+  const GOOGLE_MAPS_URL = ""; // actual Google Maps link
+  const galleryPhotos = [
+    "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=85",
+    "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1200&q=85",
+    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=85"
+  ];
 
-// กำหนดวันแต่งงานภายหลัง เช่น
-// "2027-03-20T09:00:00+07:00"
-const WEDDING_DATE = "";
+  const intro = document.querySelector('#intro');
+  const website = document.querySelector('#website');
+  const envelope = document.querySelector('#envelope');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let opening = false;
+  const bgMusic = document.getElementById('backgroundMusic');
+  const musicToggle = document.getElementById('musicToggle');
+  const musicLabel = document.getElementById('musicLabel');
+  bgMusic.volume = 0.46;
+  function syncMusicButton(){
+    const playing = !bgMusic.paused;
+    musicToggle.setAttribute('aria-pressed', String(playing));
+    musicToggle.setAttribute('aria-label', playing ? 'ปิดเสียงเพลง' : 'เปิดเสียงเพลง');
+    musicLabel.textContent = playing ? 'ปิดเพลง' : 'เปิดเพลง';
+  }
+  async function startMusic(){
+    musicToggle.classList.add('visible');
+    try { await bgMusic.play(); } catch (error) { /* Users can tap the music button. */ }
+    syncMusicButton();
+  }
+  musicToggle.addEventListener('click', async () => {
+    if (bgMusic.paused) await startMusic();
+    else { bgMusic.pause(); syncMusicButton(); }
+  });
+  bgMusic.addEventListener('play', syncMusicButton);
+  bgMusic.addEventListener('pause', syncMusicButton);
 
-// ชื่อสถานที่จัดงาน (เว้นว่างได้)
-const VENUE_NAME = "";
+  // Decorative particles, capped at 25 for mobile performance.
+  if (!reducedMotion) {
+    const symbols = ['✦', '✧', '❀', '✿'];
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < 25; i++) {
+      const particle = document.createElement('span');
+      particle.className = 'particle';
+      particle.textContent = symbols[i % symbols.length];
+      particle.setAttribute('aria-hidden', 'true');
+      particle.style.setProperty('--left', `${Math.random() * 100}%`);
+      particle.style.setProperty('--size', `${9 + Math.random() * 12}px`);
+      particle.style.setProperty('--duration', `${8 + Math.random() * 9}s`);
+      particle.style.setProperty('--delay', `${-Math.random() * 16}s`);
+      particle.style.setProperty('--drift', `${Math.random() * 170 - 85}px`);
+      particle.style.color = i % 3 === 0 ? '#f0d29b' : '#adc9e9';
+      fragment.appendChild(particle);
+    }
+    intro.appendChild(fragment);
+  }
 
-// ลิงก์ Google Maps ที่ยืนยันแล้ว
-const GOOGLE_MAPS_URL = "";
+  function showWebsite() {
+    intro.hidden = true;
+    website.hidden = false;
+    website.classList.add('reveal');
+    window.scrollTo({top:0,behavior:'instant'});
+    document.querySelector('.nav-brand').focus({preventScroll:true});
+  }
 
-// รูปภาพ Gallery
-const galleryPhotos = [
-  "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200",
-  "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1200",
-  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200"
-];
+  function openInvitation() {
+    if (opening) return;
+    opening = true;
+    startMusic(); // Sound is started from the guest's tap on the envelope/button.
+    envelope.classList.add('open');
+    document.querySelector('#openBtn').disabled = true;
+    if (reducedMotion) {showWebsite(); return;}
+    for (let i=0; i<20; i++) {
+      const sparkle = document.createElement('span');
+      sparkle.className = 'burst';
+      sparkle.style.setProperty('--x', `${(Math.random()-.5)*440}px`);
+      sparkle.style.setProperty('--y', `${(Math.random()-.5)*320}px`);
+      sparkle.style.animationDelay = `${Math.random()*.2}s`;
+      intro.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1200);
+    }
+    setTimeout(() => intro.classList.add('exit'), 1700);
+    setTimeout(showWebsite, 2480);
+  }
 
-/* ===== ENVELOPE ===== */
+  document.querySelector('#openBtn').addEventListener('click',openInvitation);
+  envelope.addEventListener('click',openInvitation);
+  envelope.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openInvitation();}});
+  document.querySelector('#replayBtn').addEventListener('click',()=>{
+    website.hidden=true;
+    website.classList.remove('reveal');
+    intro.hidden=false;
+    intro.classList.remove('exit');
+    envelope.classList.remove('open');
+    document.querySelector('#openBtn').disabled=false;
+    opening=false;
+    window.scrollTo({top:0,behavior:'instant'});
+  });
 
-let opening = false;
-
-function openInvitation() {
-  if (opening) return;
-  opening = true;
-
-  document.getElementById("envelope").classList.add("open");
-
-  setTimeout(() => {
-    document.getElementById("intro").style.display = "none";
-    document.getElementById("website").style.display = "block";
-    window.scrollTo(0, 0);
-  }, 1100);
-}
-
-/* ===== COUNTDOWN ===== */
-
-function updateCountdown() {
-  if (!WEDDING_DATE) return;
-
-  const target = new Date(WEDDING_DATE).getTime();
-  if (isNaN(target)) return;
-
-  const diff = Math.max(0, target - Date.now());
-
-  const days = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff / 3600000) % 24);
-  const minutes = Math.floor((diff / 60000) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
-
-  document.getElementById("days").textContent = days;
-  document.getElementById("hours").textContent = hours;
-  document.getElementById("minutes").textContent = minutes;
-  document.getElementById("seconds").textContent = seconds;
-
-  document.getElementById("wedding-date-label").textContent =
-    new Date(WEDDING_DATE).toLocaleString("th-TH", {
-      dateStyle: "long",
-      timeStyle: "short",
-      timeZone: "Asia/Bangkok"
-    });
-}
-
-setInterval(updateCountdown, 1000);
-updateCountdown();
-
-/* ===== GOOGLE MAPS ===== */
-
-if (VENUE_NAME) {
-  document.getElementById("venue-name").textContent = VENUE_NAME;
-}
-
-if (GOOGLE_MAPS_URL) {
-  const mapsButton = document.getElementById("maps-button");
-  mapsButton.disabled = false;
-  mapsButton.onclick = () => {
-    window.open(GOOGLE_MAPS_URL, "_blank", "noopener,noreferrer");
-  };
-}
-
-/* ===== GALLERY ===== */
-
-function changePhoto(button, index) {
-  document.getElementById("gallery-main").src = galleryPhotos[index];
-
-  document.querySelectorAll(".thumbnails button")
-    .forEach(btn => btn.classList.remove("selected"));
-
-  button.classList.add("selected");
-}
-
-/* ===== RSVP ===== */
-
-function toggleGuests() {
-  const attendance = document.getElementById("attendance").value;
-
-  document.getElementById("guest-count").style.display =
-    attendance === "no" ? "none" : "block";
-}
-
-document.getElementById("rsvp-form")
-  .addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    // Demo only: no guest information is stored or submitted.
-    document.getElementById("rsvp-success").style.display = "block";
+  // Countdown stays blank until a real date has been supplied.
+  function updateCountdown() {
+    if (!WEDDING_DATE) return;
+    const target = new Date(WEDDING_DATE);
+    if (Number.isNaN(target.getTime())) return;
+    const remaining = Math.max(0,target.getTime()-Date.now());
+    const units = [Math.floor(remaining/86400000),Math.floor(remaining/3600000)%24,Math.floor(remaining/60000)%60,Math.floor(remaining/1000)%60];
+    ['days','hours','minutes','seconds'].forEach((id,index)=>document.getElementById(id).textContent=String(units[index]).padStart(2,'0'));
+    document.getElementById('dateLabel').textContent='วันอาทิตย์ที่ 17 มกราคม 2570';
+  }
+  updateCountdown();
+  if (WEDDING_DATE) setInterval(updateCountdown,1000);
+  if (VENUE_NAME) document.getElementById('venueName').textContent=VENUE_NAME;
+  if (/^https:\/\//i.test(GOOGLE_MAPS_URL)) {
+    const button = document.getElementById('mapsBtn');
+    button.disabled=false;
+    button.addEventListener('click',()=>window.open(GOOGLE_MAPS_URL,'_blank','noopener,noreferrer'));
+  }
+  document.querySelectorAll('.thumb').forEach(button => button.addEventListener('click',()=>{
+    const index=Number(button.dataset.index);
+    document.getElementById('galleryMain').src=galleryPhotos[index];
+    document.querySelectorAll('.thumb').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false')});
+    button.classList.add('active');button.setAttribute('aria-pressed','true');
+  }));
+  document.getElementById('attendance').addEventListener('change', e=>{
+    document.getElementById('guestCountLabel').hidden=e.target.value==='no';
+  });
+  document.getElementById('rsvpForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    // Demonstration only. Do not save personal guest information in a public repository.
+    document.getElementById('rsvpMessage').hidden=false;
   });
 </script>
-
 </body>
 </html>
